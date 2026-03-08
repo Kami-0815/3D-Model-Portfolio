@@ -92,5 +92,18 @@ export const MODELS: ModelData[] = [
       'https://picsum.photos/seed/drone1/1200/800',
       'https://picsum.photos/seed/drone2/1200/800'
     ]
+  },
+  {id: 'Dosenautomat',
+    title: 'Dosenautomat',
+    category: 'Doodles',
+    thumbnail: 'public/assets/images/Dosenautomat.jpg',
+    modelUrl: 'public/assets/models/Dosenautomat.glb',
+    polycount: '15k Tris',
+    software: ['Blender'],
+    description: 'Ein Cyberpunk-style Dosenautomat.',
+    renderImages: [
+      'public/assets/images/Dosenautomat.jpg',
+      'public/assets/images/Dosenautomat2.jpg'
+    ]
   }
 ];
