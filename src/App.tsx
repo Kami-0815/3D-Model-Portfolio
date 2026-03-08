@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import ModelDetail from './pages/ModelDetail';
 import About from './pages/About';
+import Admin from './pages/Admin';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Galerie', path: '/' },
     { name: 'Über Mich', path: '/about' },
+    { name: 'Admin', path: '/admin' },
   ];
 
   return (
@@ -102,8 +104,9 @@ const Footer = () => (
         </a>
       </div>
     </div>
-    <div className="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-white/5 text-center text-xs text-white/20">
-      © {new Date().getFullYear()} 3D VISION Portfolio. Alle Rechte vorbehalten.
+    <div className="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-white/5 text-center text-xs text-white/20 flex flex-col md:flex-row justify-between items-center gap-4">
+      <span>© {new Date().getFullYear()} 3D VISION Portfolio. Alle Rechte vorbehalten.</span>
+      <Link to="/admin" className="hover:text-cyan-accent transition-colors">Admin Panel</Link>
     </div>
   </footer>
 );
@@ -118,6 +121,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/model/:id" element={<ModelDetail />} />
             <Route path="/about" element={<About />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
         <Footer />

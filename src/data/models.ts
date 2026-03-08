@@ -32,7 +32,7 @@ export const MODELS: ModelData[] = [
     title: 'Cyberpunk Supply Crate',
     category: 'Props',
     thumbnail: 'https://picsum.photos/seed/crate/800/600',
-    modelUrl: 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb',
+    modelUrl: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb',
     polycount: '12k Tris',
     software: ['Blender', 'Substance Painter'],
     description: 'Eine modulare Versorgungskiste mit emissiven Elementen und Abnutzungsspuren.',
@@ -46,7 +46,7 @@ export const MODELS: ModelData[] = [
     title: 'Organic Blob Sculpt',
     category: 'Doodles',
     thumbnail: 'https://picsum.photos/seed/blob/800/600',
-    modelUrl: 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/MaterialsVariantsShoe/glTF-Binary/MaterialsVariantsShoe.glb',
+    modelUrl: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/MaterialsVariantsShoe/glTF-Binary/MaterialsVariantsShoe.glb',
     polycount: '5k Tris',
     software: ['ZBrush'],
     description: 'Ein schneller organischer Sculpt, entstanden in einer 20-minütigen Mittagspause. Fokus auf Flow und Silhouette.',
@@ -58,7 +58,7 @@ export const MODELS: ModelData[] = [
     title: 'Deep Space Corridor',
     category: 'Environments',
     thumbnail: 'https://picsum.photos/seed/corridor/800/600',
-    modelUrl: 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/Lantern/glTF-Binary/Lantern.glb',
+    modelUrl: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF-Binary/Lantern.glb',
     polycount: '85k Tris',
     software: ['Unreal Engine 5', 'Blender', 'Quixel Mixer'],
     description: 'Ein atmosphärischer Korridor eines verlassenen Raumschiffs. Fokus auf Lighting und Storytelling durch Details.',
@@ -72,7 +72,7 @@ export const MODELS: ModelData[] = [
     title: 'Low Poly Blade',
     category: 'Doodles',
     thumbnail: 'https://picsum.photos/seed/sword/800/600',
-    modelUrl: 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Models/2.0/Duck/glTF-Binary/Duck.glb',
+    modelUrl: 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF-Binary/Duck.glb',
     polycount: '800 Tris',
     software: ['Blender'],
     description: 'Ein minimalistisches Schwert-Design. Experiment mit extrem niedriger Polycount-Limitierung.',
@@ -91,19 +91,6 @@ export const MODELS: ModelData[] = [
     renderImages: [
       'https://picsum.photos/seed/drone1/1200/800',
       'https://picsum.photos/seed/drone2/1200/800'
-    ]
-  },
-  {id: 'Dosenautomat',
-    title: 'Dosenautomat',
-    category: 'Doodles',
-    thumbnail: 'public/assets/images/Dosenautomat.jpg',
-    modelUrl: 'public/assets/models/Dosenautomat.glb',
-    polycount: '15k Tris',
-    software: ['Blender'],
-    description: 'Ein Cyberpunk-style Dosenautomat.',
-    renderImages: [
-      'public/assets/images/Dosenautomat.jpg',
-      'public/assets/images/Dosenautomat2.jpg'
     ]
   }
 ];
