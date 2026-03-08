@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a0f;
+  --color-cyan-accent: #00d4ff;
+  --color-magenta-accent: #ff006e;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-white font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden transition-all duration-300;
+  }
+
+  .neon-glow-cyan {
+    @apply shadow-[0_0_15px_rgba(0,212,255,0.3)] hover:shadow-[0_0_25px_rgba(0,212,255,0.5)];
+  }
+
+  .neon-glow-magenta {
+    @apply shadow-[0_0_15px_rgba(255,0,110,0.3)] hover:shadow-[0_0_25px_rgba(255,0,110,0.5)];
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-cyan-accent text-bg font-bold rounded-full hover:scale-105 transition-transform duration-200 shadow-lg shadow-cyan-accent/20;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border border-white/20 rounded-full hover:bg-white/10 transition-colors duration-200;
+  }
+}
+
+/* Model Viewer Custom Styles */
+model-viewer {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
