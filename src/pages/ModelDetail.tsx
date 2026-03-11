@@ -1,61 +1,23 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ModelData } from '../data/models';
-import { fetchModels } from '../services/modelService';
-import { ArrowLeft, Download, Maximize, Box, Layers, Cpu, Loader2 } from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
+import { MODELS } from '../data/models';
+import { ArrowLeft, Download, Maximize, Box, Layers, Cpu } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
 import '@google/model-viewer';
 
 export default function ModelDetail() {
   const ModelViewer = 'model-viewer' as any;
-  const viewerRef = useRef<any>(null);
   const { id } = useParams();
-  const [model, setModel] = useState<ModelData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [modelLoaded, setModelLoaded] = useState(false);
+  const model = MODELS.find(m => m.id === id);
   const [activeImage, setActiveImage] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchModels()
-      .then(models => {
-        const found = models.find(m => m.id === id);
-        if (found) {
-          setModel(found);
-          setActiveImage(found.thumbnail);
-        }
-      })
-      .catch(console.error)
-      .finally(() => setLoading(false));
-    window.scrollTo(0, 0);
-  }, [id]);
-
-  useEffect(() => {
-    const viewer = viewerRef.current;
-    if (viewer) {
-      const handleLoad = () => setModelLoaded(true);
-      viewer.addEventListener('load', handleLoad);
-      
-      // Fallback: If it takes too long or is already loaded
-      const timeout = setTimeout(() => {
-        if (!modelLoaded) setModelLoaded(true);
-      }, 5000);
-
-      return () => {
-        viewer.removeEventListener('load', handleLoad);
-        clearTimeout(timeout);
-      };
+    if (model) {
+      setActiveImage(model.thumbnail);
+      window.scrollTo(0, 0);
     }
   }, [model]);
-
-  if (loading) {
-    return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4">
-        <Loader2 className="animate-spin text-cyan-accent" size={40} />
-        <p className="text-white/40">Lade Projektdetails...</p>
-      </div>
-    );
-  }
 
   if (!model) {
     return (
@@ -76,16 +38,7 @@ export default function ModelDetail() {
         {/* Left Column: 3D Viewer & Gallery */}
         <div className="lg:col-span-8 space-y-8">
           <div className="aspect-video glass-card relative bg-white/2 overflow-hidden group">
-            {!modelLoaded && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-bg/50 backdrop-blur-sm z-10 gap-4">
-                <Loader2 className="animate-spin text-cyan-accent" size={48} />
-                <p className="text-sm font-bold tracking-widest text-cyan-accent animate-pulse">
-                  INITIALISIERE 3D ENGINE...
-                </p>
-              </div>
-            )}
             <ModelViewer
-              ref={viewerRef}
               src={model.modelUrl}
               alt={model.title}
               auto-rotate
