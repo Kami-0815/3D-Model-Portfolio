@@ -31,6 +31,20 @@ Um deine eigenen Modelle hinzuzufügen, folge diesen Schritten:
 }
 ```
 
+## Deployment (GitHub Pages)
+
+Diese App ist so vorkonfiguriert, dass sie einfach auf **GitHub Pages** veröffentlicht werden kann:
+
+1.  **Build erstellen**: Führe `npm run build` aus. Dies generiert einen `dist` Ordner.
+2.  **Veröffentlichung**:
+    *   Am einfachsten ist die Nutzung des Pakets `gh-pages`:
+        1. Führe `npm install gh-pages --save-dev` aus.
+        2. Füge `"predeploy": "npm run build", "deploy": "gh-pages -d dist"` zu den `scripts` in der `package.json` hinzu.
+        3. Führe `npm run deploy` aus.
+    *   Alternativ kannst du den Inhalt des `dist` Ordners manuell in einen `gh-pages` Branch oder einen speziellen Ordner in deinem Repository hochladen.
+
+**Wichtig**: Da diese Version `localStorage` für die Admin-Funktion nutzt, werden über das Admin-Panel hinzugefügte Modelle nur in deinem aktuellen Browser gespeichert. Um Modelle dauerhaft für alle Besucher anzuzeigen, füge sie wie oben beschrieben in `src/data/models.ts` hinzu.
+
 ## Technologien
 - React 19
 - Tailwind CSS 4

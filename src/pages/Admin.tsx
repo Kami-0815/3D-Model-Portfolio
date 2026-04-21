@@ -8,6 +8,8 @@ export default function Admin() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
 
   const [formData, setFormData] = useState({
     id: '',
@@ -19,8 +21,17 @@ export default function Admin() {
     software: '',
     description: '',
     renderImages: '',
-    timeSpent: ''
   });
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passwordInput === '3d-0815') {
+      setIsAuthorized(true);
+      setError(null);
+    } else {
+      setError('Falsches Passwort');
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +57,35 @@ export default function Admin() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  if (!isAuthorized) {
+    return (
+      <div className="max-w-md mx-auto px-6 py-32">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="glass-card p-8 text-center"
+        >
+          <Box className="mx-auto mb-6 text-cyan-accent" size={48} />
+          <h1 className="text-2xl font-bold mb-6">Admin Login</h1>
+          <form onSubmit={handlePasswordSubmit} className="space-y-4">
+            <input 
+              type="password"
+              value={passwordInput}
+              onChange={(e) => setPasswordInput(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-accent outline-none transition-colors text-center"
+              placeholder="Passwort eingeben"
+              autoFocus
+            />
+            {error && <p className="text-red-500 text-xs">{error}</p>}
+            <button type="submit" className="w-full btn-primary">
+              Anmelden
+            </button>
+          </form>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -100,17 +140,8 @@ export default function Admin() {
                 <option value="Props">Props</option>
                 <option value="Environments">Environments</option>
                 <option value="Doodles">Doodles</option>
+                <option value="Speedsculpts">Speedsculpts (30 Min)</option>
               </select>
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-white/40">Zeitaufwand (Optional)</label>
-              <input 
-                name="timeSpent"
-                value={formData.timeSpent}
-                onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-cyan-accent outline-none transition-colors" 
-                placeholder="z.B. 30 min" 
-              />
             </div>
           </div>
 
